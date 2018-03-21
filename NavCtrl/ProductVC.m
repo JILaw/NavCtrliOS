@@ -17,6 +17,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
+	
+	
+	_productImagesArray = @[@"img-Product-1.png",@"googlePhone.jpg", @"teslaCar.png", @"twitterFeed.png"] ;
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -26,13 +29,16 @@
     
     if ([self.title isEqualToString:@"Apple mobile devices"]) {
         self.products = @[@"iPad", @"iPod Touch",@"iPhone"];
-    } else {
+    } else if ([self.title isEqualToString:@"Samsung mobile devices"]){
         self.products = @[@"Galaxy S4", @"Galaxy Note", @"Galaxy Tab"];
-    }
+    } else if ([self.title isEqualToString:@"Sony mobile devices"]){
+		self.products = @[@"Experia L1", @"Experia XA2", @"Experia XZ"];
+	} else {
+		self.products = @[@"Nexus One", @"Nexus S", @"Galaxy Nexus"];
     [self.tableView reloadData];
 }
 
-
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -63,6 +69,16 @@
     }
     // Configure the cell...
     cell.textLabel.text = [self.products objectAtIndex:[indexPath row]];
+	
+	
+	NSString *productImageStringName = [self.productImagesArray objectAtIndex: [indexPath row]];
+	
+	cell.imageView.image = [UIImage imageNamed:productImageStringName];
+	
+	
+	
+	
+   
     return cell;
 }
 

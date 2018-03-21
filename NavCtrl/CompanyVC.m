@@ -14,8 +14,12 @@
 
 @implementation CompanyVC
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+	
+	_companyImagesArray = @[@"img-companyLogo_Apple.png",@"img-companyLogo_Google.png", @"img-companyLogo_Tesla", @"img-companyLogo_Twitter.png"] ;
+
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     
@@ -23,7 +27,7 @@
     self.navigationItem.rightBarButtonItem = editButton;
     
     
-    self.companyList = @[@"Apple mobile devices",@"Samsung mobile devices"];
+    self.companyList = @[@"Apple mobile devices",@"Google mobile devices",@"Tesla mobile devices", @"Twitter mobile devices"];
     self.title = @"Mobile device makers";
     // Do any additional setup after loading the view from its nib.
 }
@@ -72,6 +76,14 @@
     // Configure the cell...
     
     cell.textLabel.text = [self.companyList objectAtIndex:[indexPath row]];
+	
+	
+	
+	NSString *companyImageStringName = [self.companyImagesArray objectAtIndex: [indexPath row]];
+	
+	cell.imageView.image = [UIImage imageNamed:companyImageStringName];
+	
+	
     
     return cell;
 }
@@ -126,9 +138,13 @@
     self.productViewController = [[ProductVC alloc]init];
     if (indexPath.row == 0){
         self.productViewController.title = @"Apple mobile devices";
-    } else {
+    } else if (indexPath.row == 1) {
         self.productViewController.title = @"Samsung mobile devices";
-    }
+	} else if (indexPath.row == 2)  {
+		self.productViewController.title = @"Tesla mobile devices";
+	} else {
+		self.productViewController.title = @"Google mobile devices";
+	}
     
     [self.navigationController
      pushViewController:self.productViewController

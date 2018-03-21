@@ -15,4 +15,5 @@
 @property (nonatomic, retain) NSArray *companyList;
 @property (nonatomic, retain) ProductVC *productViewController;
 
+@property (nonatomic, retain) NSArray<NSString*> *companyImagesArray;
 @end
