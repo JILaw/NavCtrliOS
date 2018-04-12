@@ -8,12 +8,18 @@
 
 #import <UIKit/UIKit.h>
 #import "ProductVC.h"
+#import "Company.h"
 
 @interface CompanyVC : UIViewController<UITableViewDelegate, UITableViewDataSource>
 
 @property (retain, nonatomic) IBOutlet UITableView *tableView;
-@property (nonatomic, retain) NSMutableArray *companyList;
+
+
+//@property (nonatomic, retain) NSMutableArray *companyList;
+@property (nonatomic, retain) NSMutableArray<Company*> *companies;
+
+
 @property (nonatomic, retain) ProductVC *productViewController;
 
-@property (nonatomic, retain) NSMutableArray<NSString*> *companyImagesArray;
+//@property (nonatomic, retain) NSMutableArray<NSString*> *companyImagesArray;
 @end

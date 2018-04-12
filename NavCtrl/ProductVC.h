@@ -7,22 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "Product.h"
 @interface ProductVC : UIViewController<UITableViewDelegate, UITableViewDataSource>
 
 @property (retain, nonatomic) IBOutlet UITableView *tableView;
-@property (nonatomic, retain) NSMutableArray *products;
-@property (nonatomic, retain) NSMutableArray *productsImagesArray;
 
-//@property (nonatomic, retain) NSMutableArray<NSString*> *appleProductImagesArray;
-//@property (nonatomic, retain) NSMutableArray<NSString*> *googleProductImagesArray;
-//@property (nonatomic, retain) NSMutableArray<NSString*> *teslaProductImagesArray;
-//@property (nonatomic, retain) NSMutableArray<NSString*> *twitterProductImagesArray;
+@property (nonatomic, retain) NSMutableArray<Product*> *products;
+
+//@property (nonatomic, retain) NSMutableArray *products;
+//@property (nonatomic, retain) NSMutableArray *productsImagesArray;
+
 
 @property (strong, nonatomic) NSURL *productURL;
 
 @property (nonatomic) int hold;
 
 
-//@property (nonatomic, retain) NSArray<NSString*> *productImages;
+
 @end

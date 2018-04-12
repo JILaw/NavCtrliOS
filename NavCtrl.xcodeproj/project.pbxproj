@@ -27,6 +27,9 @@
 		9E62FF291E4A3982002D55B8 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E62FF281E4A3982002D55B8 /* Launch Screen.storyboard */; };
 		F852C6AE20642ADD001550E7 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F852C6AC20642ADD001550E7 /* DetailViewController.m */; };
 		F852C6AF20642ADD001550E7 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F852C6AD20642ADD001550E7 /* DetailViewController.xib */; };
+		F864751B206C00C3002A5DD2 /* Company.m in Sources */ = {isa = PBXBuildFile; fileRef = F864751A206C00C3002A5DD2 /* Company.m */; };
+		F864751F206C010A002A5DD2 /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = F864751E206C010A002A5DD2 /* Product.m */; };
+		F8647523206C2446002A5DD2 /* DataAccessObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F8647522206C2446002A5DD2 /* DataAccessObject.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +70,12 @@
 		F852C6AB20642ADD001550E7 /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		F852C6AC20642ADD001550E7 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		F852C6AD20642ADD001550E7 /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
+		F8647519206C00C3002A5DD2 /* Company.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Company.h; sourceTree = "<group>"; };
+		F864751A206C00C3002A5DD2 /* Company.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Company.m; sourceTree = "<group>"; };
+		F864751D206C010A002A5DD2 /* Product.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Product.h; sourceTree = "<group>"; };
+		F864751E206C010A002A5DD2 /* Product.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Product.m; sourceTree = "<group>"; };
+		F8647521206C2446002A5DD2 /* DataAccessObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataAccessObject.h; sourceTree = "<group>"; };
+		F8647522206C2446002A5DD2 /* DataAccessObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataAccessObject.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +134,9 @@
 		48A656A818163BF200746D36 = {
 			isa = PBXGroup;
 			children = (
+				F8647520206C0116002A5DD2 /* Product */,
+				F864751C206C00D6002A5DD2 /* Company */,
+				F8647524206C245D002A5DD2 /* (DAO) Data Access Object */,
 				48A656BA18163BF200746D36 /* NavCtrl */,
 				48A656D318163BF200746D36 /* NavCtrlTests */,
 				48A656B318163BF200746D36 /* Frameworks */,
@@ -204,6 +216,34 @@
 				F852C6AD20642ADD001550E7 /* DetailViewController.xib */,
 			);
 			name = DetailViewController;
+			sourceTree = "<group>";
+		};
+		F864751C206C00D6002A5DD2 /* Company */ = {
+			isa = PBXGroup;
+			children = (
+				F8647519206C00C3002A5DD2 /* Company.h */,
+				F864751A206C00C3002A5DD2 /* Company.m */,
+			);
+			path = Company;
+			sourceTree = "<group>";
+		};
+		F8647520206C0116002A5DD2 /* Product */ = {
+			isa = PBXGroup;
+			children = (
+				F864751D206C010A002A5DD2 /* Product.h */,
+				F864751E206C010A002A5DD2 /* Product.m */,
+			);
+			path = Product;
+			sourceTree = "<group>";
+		};
+		F8647524206C245D002A5DD2 /* (DAO) Data Access Object */ = {
+			isa = PBXGroup;
+			children = (
+				F8647521206C2446002A5DD2 /* DataAccessObject.h */,
+				F8647522206C2446002A5DD2 /* DataAccessObject.m */,
+			);
+			name = "(DAO) Data Access Object";
+			path = NavCtrl;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -307,9 +347,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F864751F206C010A002A5DD2 /* Product.m in Sources */,
 				9E62FF211E4A33DC002D55B8 /* CompanyVC.m in Sources */,
+				F864751B206C00C3002A5DD2 /* Company.m in Sources */,
 				F852C6AE20642ADD001550E7 /* DetailViewController.m in Sources */,
 				48A656C518163BF200746D36 /* NavControllerAppDelegate.m in Sources */,
+				F8647523206C2446002A5DD2 /* DataAccessObject.m in Sources */,
 				48A656C118163BF200746D36 /* main.m in Sources */,
 				9E62FF261E4A33F1002D55B8 /* ProductVC.m in Sources */,
 			);

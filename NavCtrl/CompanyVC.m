@@ -7,8 +7,13 @@
 //
 
 #import "CompanyVC.h"
+#import "Company.h"
+#import "Product.h"
+#import "DataAccessObject.h"
 
-@interface CompanyVC ()
+@interface CompanyVC () {
+	DataAccessObject *dao;
+}
 
 @end
 
@@ -23,15 +28,24 @@
 
 	// Do any additional setup after loading the view from its nib.
 
-	self.companyImagesArray = [[NSMutableArray alloc] initWithObjects: @"img-companyLogo_Apple.png",@"img-companyLogo_Google.png", @"img-companyLogo_Tesla", @"img-companyLogo_Twitter.png", nil];
-
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+	
+	
+	
+	dao = [[DataAccessObject alloc] init];
+	[dao createDemoCompanys];
+	
+	self.companies = [dao companysList];
+	
+	NSLog(@"YI Company name is %@ and product name %@", self.companies[0].companyName, self.companies[0].products[0].productName);
+	NSLog (@"The list of companies is: %@", [dao companysList]);
+	
+	
+	// Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     
     UIBarButtonItem *editButton = [[UIBarButtonItem alloc]initWithTitle:@"Edit" style:UIBarButtonItemStylePlain target:self action:@selector(toggleEditMode)];
     self.navigationItem.rightBarButtonItem = editButton;
 	
-	self.companyList = [[NSMutableArray alloc] initWithObjects: @"Apple mobile devices", @"Google mobile devices", @"Tesla mobile devices", @"Twitter mobile devices", nil];
+	//self.companyList = [[NSMutableArray alloc] initWithObjects: @"Apple mobile devices", @"Google mobile devices", @"Tesla mobile devices", @"Twitter mobile devices", nil];
 	
 	
 	self.title = @"Mobile device makers";
@@ -70,7 +84,8 @@
 {
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return [self.companyList count];
+	// first OOP change
+    return [self.companies count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -82,12 +97,27 @@
     }
     
     // Configure the cell...
-    
-    cell.textLabel.text = [self.companyList objectAtIndex:[indexPath row]];
 	
 	
 	
-	NSString *companyImageStringName = [self.companyImagesArray objectAtIndex: [indexPath row]];
+	
+	
+    //cell.textLabel.text = [self.companyList objectAtIndex:[indexPath row]];
+	
+	// second OOP change
+	//cell.textLabel.text = [[self.companies objectAtIndex:[indexPath row]] companyName] ;
+	//cell.textLabel.text = self.companies[indexPath.row].companyName;
+	
+	Company *selectedCompany = self.companies[indexPath.row];
+	
+	cell.textLabel.text = selectedCompany.companyName;
+	
+	
+	
+	
+	//NSString *companyImageStringName = [self.companyImagesArray objectAtIndex: [indexPath row]];
+	// third OOP change
+	NSString *companyImageStringName = selectedCompany.companyImageName;
 	
 	cell.imageView.image = [UIImage imageNamed:companyImageStringName];
 	
@@ -110,12 +140,19 @@
  // Code here to support editing the table view.
  - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
  {
+	 
+	// Company *selectedCompany = self.companies[indexPath.row];
+	 
 	 if (editingStyle == UITableViewCellEditingStyleDelete) {
 	 
 		// Data Deletion
 		// Delete the row from the data source, from the rows of company and images arrays (to avoid crash)
-		[_companyList removeObjectAtIndex: indexPath.row];
-		[_companyImagesArray removeObjectAtIndex: indexPath.row];
+		[self.companies removeObjectAtIndex: indexPath.row];
+		 
+		// since this data is no longer stored in an array, but instead is stored on properties of objects ... do we still need to do anything here?
+		 
+		// **OOP changes below??**
+		//[_companyImagesArray removeObjectAtIndex: indexPath.row];
 
 		// UI Deletion
 		 [tableView deleteRowsAtIndexPaths: [NSMutableArray arrayWithObject: indexPath] withRowAnimation:UITableViewRowAnimationFade];
@@ -143,25 +180,28 @@
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
 {
 	
+	//Company *selectedCompany = self.companies[indexPath.row];
+	
 	NSLog(@"from %ld, to %ld", fromIndexPath.row, toIndexPath.row);
 	
 	// Data Move is done below
 	
 	// keep the object at fromindex to a temp variable
-	NSString *objectToBeMoved = [self.companyList objectAtIndex:[fromIndexPath row]];
-	NSString *imageToBeMoved = [self.companyImagesArray objectAtIndex: [fromIndexPath row]];
+	// fourth, fifth OOP change  AGAIN: these are not arrays now so.... ???
+	Company *objectToBeMoved = [_companies objectAtIndex:[fromIndexPath row]];
+	//NSString *imageToBeMoved = [selectedCompany.companyImageName objectAtIndex: [fromIndexPath row]];
 	
 	
 	
 	// remove the object(s) from from index
 	//[self.companyList removeObject:objectToBeMoved];
-	[_companyList removeObjectAtIndex: fromIndexPath.row];
+	[self.companies removeObjectAtIndex: fromIndexPath.row];
 	//[_companyImagesArray removeObjectAtIndex: fromIndexPath.row];
-	[self.companyImagesArray removeObject:imageToBeMoved];
+	//[self.companyImagesArray removeObject:imageToBeMoved];
 	
 	// add the object back from temp to toindex
-	[self.companyList insertObject:objectToBeMoved atIndex:[toIndexPath row]];
-	[self.companyImagesArray insertObject:imageToBeMoved atIndex:[toIndexPath row]];
+	[self.companies insertObject:objectToBeMoved atIndex:[toIndexPath row]];
+	//[self.companyImagesArray insertObject:imageToBeMoved atIndex:[toIndexPath row]];
 
 	// UI Move is done by tableview internal code magic
 	
@@ -190,7 +230,10 @@
 //	}
 //
 	
-	self.productViewController.title = self.companyList[indexPath.row];
+	self.productViewController.title = self.companies[indexPath.row].companyName;
+	
+	self.productViewController.products = self.companies[indexPath.row].products;
+	
     [self.navigationController
      pushViewController:self.productViewController
      animated:YES];
