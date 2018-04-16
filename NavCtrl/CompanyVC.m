@@ -39,19 +39,65 @@
 	NSLog(@"YI Company name is %@ and product name %@", self.companies[0].companyName, self.companies[0].products[0].productName);
 	NSLog (@"The list of companies is: %@", [dao companysList]);
 	
+	UINavigationBar *navbar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 50)];
+	[navbar setBackgroundColor:[UIColor greenColor]];
+	self.navigationItem.title = @"Mobile Devices";
+	
+	
+//
+//	 UINavigationItem *navItem = [[UINavigationItem alloc] initWithTitle:@"Mobile Devices"];
+//
+//	/* Assign the navigation item to the navigation bar.*/
+//	[navbar setItems:@[navItem]];
+//
+//	/* add navigation bar to the root view.*/
+//	[self.view addSubview:navbar];
+//
+	
+	//[[self navigationBar setTitle:@"Mobile Devices"];
+	
+	
+	//UINavigationItem *navItem = [[UINavigationItem alloc] initWithTitle:@"Mobile Device Makers"];
+	
+	//[navbar ]
+	//[navbar setItems:@[navItem]];
+	//[self.view addSubview:navbar];
+	
+	
+	//[self.navigationBar setBarTintColor:UIColor.greenColor];
 	
 	// Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     
     UIBarButtonItem *editButton = [[UIBarButtonItem alloc]initWithTitle:@"Edit" style:UIBarButtonItemStylePlain target:self action:@selector(toggleEditMode)];
-    self.navigationItem.rightBarButtonItem = editButton;
+    self.navigationItem.leftBarButtonItem = editButton;
+//	self.navigationItem.leftBarButtonItem.tintColor = [UIColor whiteColor];
+	
+	
+	
+	
+	
+	//ADDING 'ADD' BUTTON TRIAL CODE BELOW
+	
+	UIImage *addButtonImage = [[UIImage imageNamed:@"btn-navAdd"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+	UIBarButtonItem *addCompanybutton = [[UIBarButtonItem alloc] initWithImage:addButtonImage style:UIBarButtonItemStylePlain target:self action:@selector(addCompany:)];
+	self.navigationItem.rightBarButtonItem = addCompanybutton;
+	
+
+	
+	
 	
 	//self.companyList = [[NSMutableArray alloc] initWithObjects: @"Apple mobile devices", @"Google mobile devices", @"Tesla mobile devices", @"Twitter mobile devices", nil];
 	
 	
-	self.title = @"Mobile device makers";
+	//self.title = @"Mobile device makers";
 	
 	self.productViewController = [[ProductVC alloc]init];
 	
+}
+
+- (void)addCompany {
+	
+	// code to load new VC here !
 }
 
 - (void)toggleEditMode {
