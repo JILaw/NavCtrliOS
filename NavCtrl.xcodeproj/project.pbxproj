@@ -25,11 +25,19 @@
 		9E62FF261E4A33F1002D55B8 /* ProductVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E62FF241E4A33F1002D55B8 /* ProductVC.m */; };
 		9E62FF271E4A33F1002D55B8 /* ProductVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E62FF251E4A33F1002D55B8 /* ProductVC.xib */; };
 		9E62FF291E4A3982002D55B8 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E62FF281E4A3982002D55B8 /* Launch Screen.storyboard */; };
+		F80DF681208F838B00AFC12E /* EditProductViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F80DF67F208F838B00AFC12E /* EditProductViewController.xib */; };
+		F80DF686208FD48400AFC12E /* EditCompanyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F80DF684208FD48400AFC12E /* EditCompanyViewController.m */; };
+		F80DF687208FD48400AFC12E /* EditCompanyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F80DF685208FD48400AFC12E /* EditCompanyViewController.xib */; };
 		F852C6AE20642ADD001550E7 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F852C6AC20642ADD001550E7 /* DetailViewController.m */; };
 		F852C6AF20642ADD001550E7 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F852C6AD20642ADD001550E7 /* DetailViewController.xib */; };
 		F864751B206C00C3002A5DD2 /* Company.m in Sources */ = {isa = PBXBuildFile; fileRef = F864751A206C00C3002A5DD2 /* Company.m */; };
 		F864751F206C010A002A5DD2 /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = F864751E206C010A002A5DD2 /* Product.m */; };
 		F8647523206C2446002A5DD2 /* DataAccessObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F8647522206C2446002A5DD2 /* DataAccessObject.m */; };
+		F86A9A8E2085231B00CEFE19 /* AddCompanyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F86A9A8C2085231B00CEFE19 /* AddCompanyViewController.m */; };
+		F86A9A8F2085231B00CEFE19 /* AddCompanyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F86A9A8D2085231B00CEFE19 /* AddCompanyViewController.xib */; };
+		F86A9A94208523B800CEFE19 /* AddProductViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F86A9A92208523B800CEFE19 /* AddProductViewController.m */; };
+		F86A9A95208523B800CEFE19 /* AddProductViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F86A9A93208523B800CEFE19 /* AddProductViewController.xib */; };
+		F89DC36D208FDC5C00DBD8DD /* EditProductViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F89DC36C208FDC5C00DBD8DD /* EditProductViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +75,11 @@
 		9E62FF241E4A33F1002D55B8 /* ProductVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductVC.m; sourceTree = "<group>"; };
 		9E62FF251E4A33F1002D55B8 /* ProductVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductVC.xib; sourceTree = "<group>"; };
 		9E62FF281E4A3982002D55B8 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		F80DF67D208F838B00AFC12E /* EditProductViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditProductViewController.h; sourceTree = "<group>"; };
+		F80DF67F208F838B00AFC12E /* EditProductViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditProductViewController.xib; sourceTree = "<group>"; };
+		F80DF683208FD48400AFC12E /* EditCompanyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditCompanyViewController.h; sourceTree = "<group>"; };
+		F80DF684208FD48400AFC12E /* EditCompanyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditCompanyViewController.m; sourceTree = "<group>"; };
+		F80DF685208FD48400AFC12E /* EditCompanyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditCompanyViewController.xib; sourceTree = "<group>"; };
 		F852C6AB20642ADD001550E7 /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		F852C6AC20642ADD001550E7 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		F852C6AD20642ADD001550E7 /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
@@ -76,6 +89,13 @@
 		F864751E206C010A002A5DD2 /* Product.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Product.m; sourceTree = "<group>"; };
 		F8647521206C2446002A5DD2 /* DataAccessObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataAccessObject.h; sourceTree = "<group>"; };
 		F8647522206C2446002A5DD2 /* DataAccessObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataAccessObject.m; sourceTree = "<group>"; };
+		F86A9A8B2085231B00CEFE19 /* AddCompanyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddCompanyViewController.h; sourceTree = "<group>"; };
+		F86A9A8C2085231B00CEFE19 /* AddCompanyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddCompanyViewController.m; sourceTree = "<group>"; };
+		F86A9A8D2085231B00CEFE19 /* AddCompanyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddCompanyViewController.xib; sourceTree = "<group>"; };
+		F86A9A91208523B800CEFE19 /* AddProductViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddProductViewController.h; sourceTree = "<group>"; };
+		F86A9A92208523B800CEFE19 /* AddProductViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddProductViewController.m; sourceTree = "<group>"; };
+		F86A9A93208523B800CEFE19 /* AddProductViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddProductViewController.xib; sourceTree = "<group>"; };
+		F89DC36C208FDC5C00DBD8DD /* EditProductViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditProductViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,14 +131,14 @@
 			name = AppDelegate;
 			sourceTree = "<group>";
 		};
-		483796CC1BCBF7C70062D5AB /* ParentViewController */ = {
+		483796CC1BCBF7C70062D5AB /* CompanyViewController */ = {
 			isa = PBXGroup;
 			children = (
 				9E62FF1E1E4A33DC002D55B8 /* CompanyVC.h */,
 				9E62FF1F1E4A33DC002D55B8 /* CompanyVC.m */,
 				9E62FF201E4A33DC002D55B8 /* CompanyVC.xib */,
 			);
-			name = ParentViewController;
+			name = CompanyViewController;
 			sourceTree = "<group>";
 		};
 		483796CD1BCBF7EB0062D5AB /* ProductViewController */ = {
@@ -167,10 +187,14 @@
 		48A656BA18163BF200746D36 /* NavCtrl */ = {
 			isa = PBXGroup;
 			children = (
+				F80DF688208FD48A00AFC12E /* EditCompanyViewController */,
+				F80DF682208F839E00AFC12E /* EditProductViewController */,
+				F86A9A96208523C500CEFE19 /* AddProductViewController */,
+				F86A9A902085232700CEFE19 /* AddCompanyViewController */,
 				F852C6B020642AFA001550E7 /* DetailViewController */,
 				483796CB1BCBF7A00062D5AB /* AppDelegate */,
-				483796CC1BCBF7C70062D5AB /* ParentViewController */,
 				483796CD1BCBF7EB0062D5AB /* ProductViewController */,
+				483796CC1BCBF7C70062D5AB /* CompanyViewController */,
 				48A656C618163BF200746D36 /* Images.xcassets */,
 				48A656BB18163BF200746D36 /* Supporting Files */,
 			);
@@ -206,6 +230,26 @@
 				48A656D618163BF200746D36 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F80DF682208F839E00AFC12E /* EditProductViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F80DF67D208F838B00AFC12E /* EditProductViewController.h */,
+				F89DC36C208FDC5C00DBD8DD /* EditProductViewController.m */,
+				F80DF67F208F838B00AFC12E /* EditProductViewController.xib */,
+			);
+			name = EditProductViewController;
+			sourceTree = "<group>";
+		};
+		F80DF688208FD48A00AFC12E /* EditCompanyViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F80DF683208FD48400AFC12E /* EditCompanyViewController.h */,
+				F80DF684208FD48400AFC12E /* EditCompanyViewController.m */,
+				F80DF685208FD48400AFC12E /* EditCompanyViewController.xib */,
+			);
+			path = EditCompanyViewController;
 			sourceTree = "<group>";
 		};
 		F852C6B020642AFA001550E7 /* DetailViewController */ = {
@@ -244,6 +288,26 @@
 			);
 			name = "(DAO) Data Access Object";
 			path = NavCtrl;
+			sourceTree = "<group>";
+		};
+		F86A9A902085232700CEFE19 /* AddCompanyViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F86A9A8B2085231B00CEFE19 /* AddCompanyViewController.h */,
+				F86A9A8C2085231B00CEFE19 /* AddCompanyViewController.m */,
+				F86A9A8D2085231B00CEFE19 /* AddCompanyViewController.xib */,
+			);
+			name = AddCompanyViewController;
+			sourceTree = "<group>";
+		};
+		F86A9A96208523C500CEFE19 /* AddProductViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F86A9A91208523B800CEFE19 /* AddProductViewController.h */,
+				F86A9A92208523B800CEFE19 /* AddProductViewController.m */,
+				F86A9A93208523B800CEFE19 /* AddProductViewController.xib */,
+			);
+			path = AddProductViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -326,9 +390,13 @@
 				48A656EE1816468000746D36 /* Sunflower.gif in Resources */,
 				9E62FF221E4A33DC002D55B8 /* CompanyVC.xib in Resources */,
 				F852C6AF20642ADD001550E7 /* DetailViewController.xib in Resources */,
+				F80DF687208FD48400AFC12E /* EditCompanyViewController.xib in Resources */,
+				F86A9A8F2085231B00CEFE19 /* AddCompanyViewController.xib in Resources */,
 				9E62FF271E4A33F1002D55B8 /* ProductVC.xib in Resources */,
 				48A656BF18163BF200746D36 /* InfoPlist.strings in Resources */,
 				48A656C718163BF200746D36 /* Images.xcassets in Resources */,
+				F80DF681208F838B00AFC12E /* EditProductViewController.xib in Resources */,
+				F86A9A95208523B800CEFE19 /* AddProductViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,11 +415,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F86A9A94208523B800CEFE19 /* AddProductViewController.m in Sources */,
+				F86A9A8E2085231B00CEFE19 /* AddCompanyViewController.m in Sources */,
+				F80DF686208FD48400AFC12E /* EditCompanyViewController.m in Sources */,
 				F864751F206C010A002A5DD2 /* Product.m in Sources */,
 				9E62FF211E4A33DC002D55B8 /* CompanyVC.m in Sources */,
 				F864751B206C00C3002A5DD2 /* Company.m in Sources */,
 				F852C6AE20642ADD001550E7 /* DetailViewController.m in Sources */,
 				48A656C518163BF200746D36 /* NavControllerAppDelegate.m in Sources */,
+				F89DC36D208FDC5C00DBD8DD /* EditProductViewController.m in Sources */,
 				F8647523206C2446002A5DD2 /* DataAccessObject.m in Sources */,
 				48A656C118163BF200746D36 /* main.m in Sources */,
 				9E62FF261E4A33F1002D55B8 /* ProductVC.m in Sources */,

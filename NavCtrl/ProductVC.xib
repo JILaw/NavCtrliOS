@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProductVC">
             <connections>
+                <outlet property="productImage" destination="13S-kW-UOv" id="6V0-ky-CZo"/>
                 <outlet property="tableView" destination="gNa-zb-Lno" id="F2M-E8-BMo"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -21,21 +22,31 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gNa-zb-Lno">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <rect key="frame" x="0.0" y="260" width="375" height="407"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="fsA-aI-Xkg"/>
                         <outlet property="delegate" destination="-1" id="Q5v-vc-9YK"/>
                     </connections>
                 </tableView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="13S-kW-UOv">
+                    <rect key="frame" x="117.5" y="72" width="140" height="128"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="140" id="iLo-Ok-630"/>
+                        <constraint firstAttribute="height" constant="128" id="w2g-m5-G44"/>
+                    </constraints>
+                </imageView>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="gNa-zb-Lno" secondAttribute="trailing" id="60x-h6-FvE"/>
                 <constraint firstAttribute="bottom" secondItem="gNa-zb-Lno" secondAttribute="bottom" id="IC3-hj-k0o"/>
                 <constraint firstItem="gNa-zb-Lno" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Iu8-tu-oAb"/>
-                <constraint firstItem="gNa-zb-Lno" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="UFv-IL-Rlu"/>
+                <constraint firstItem="gNa-zb-Lno" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="260" id="Jax-bV-Mgf"/>
+                <constraint firstItem="13S-kW-UOv" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="72" id="NTA-k3-wkB"/>
+                <constraint firstItem="13S-kW-UOv" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="VxU-Oi-Bry"/>
             </constraints>
+            <point key="canvasLocation" x="39.5" y="82.5"/>
         </view>
     </objects>
 </document>

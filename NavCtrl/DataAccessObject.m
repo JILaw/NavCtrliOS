@@ -11,7 +11,14 @@
 
 @implementation DataAccessObject
 
-//self.companyImagesArray = [[NSMutableArray alloc] initWithObjects: @"img-companyLogo_Apple.png",@"img-companyLogo_Google.png", @"img-companyLogo_Tesla", @"img-companyLogo_Twitter.png", nil];
++(DataAccessObject *) sharedDAO {
+	static DataAccessObject *_sharedDAO = nil;
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+		_sharedDAO = [[self alloc] init];
+	});
+	return _sharedDAO;
+}
 
 
 
@@ -22,10 +29,10 @@
 -(void) createDemoCompanys {
 	
 	// Companies...
-	Company *apple = [[Company alloc] initWithCompanyName:@"Apple mobile devices" andWithCompanyImageName:@"img-companyLogo_Apple.png"];
-	Company *google = [[Company alloc] initWithCompanyName:@"Google mobile devices" andWithCompanyImageName:@"img-companyLogo_Google.png"];
-	Company *tesla = [[Company alloc] initWithCompanyName:@"Tesla mobile devices" andWithCompanyImageName:@"img-companyLogo_Tesla"];
-	Company *twitter = [[Company alloc] initWithCompanyName:@"Twitter mobile devices" andWithCompanyImageName:@"img-companyLogo_Twitter.png"];
+	Company *apple = [[Company alloc] initWithCompanyName:@"Apple mobile devices" andWithCompanyStockSymbol: @"" andWithCompanyImageName:@"img-companyLogo_Apple.png"];
+	Company *google = [[Company alloc] initWithCompanyName:@"Google mobile devices" andWithCompanyStockSymbol: @"" andWithCompanyImageName:@"img-companyLogo_Google.png"];
+	Company *tesla = [[Company alloc] initWithCompanyName:@"Tesla mobile devices" andWithCompanyStockSymbol: @"" andWithCompanyImageName:@"img-companyLogo_Tesla"];
+	Company *twitter = [[Company alloc] initWithCompanyName:@"Twitter mobile devices" andWithCompanyStockSymbol: @"" andWithCompanyImageName:@"img-companyLogo_Twitter.png"];
 
 	// Products...
 	Product *iPad = [[Product alloc] initWithProductName: @"iPad" andWithProductImageName: @"img-Product-1.png" andWithProductURL: @"https://www.apple.com/ipad-9.7/"];
@@ -79,8 +86,60 @@
 	
 }
 
+-(void)addCompany:(Company *)company {
+	[_companysList addObject: company];
+}
 
+-(void) addProduct: (Product*) product companyId: (int) compId{
+	
+	[[[self.companysList objectAtIndex:compId] products] addObject:product];
 
+}
+
+-(void) editProductWithId: (int) productId andCompanyId: (int) companyId product: (NSString*) newName andProductURL: (NSString*) productURL andWithProductImageURL: (NSString*) productImageURL {
+	
+	Company *currentCompany = self.companysList[companyId];
+	Product *currentProduct = currentCompany.products[productId];
+	currentProduct.productName = newName;
+	currentProduct.productImageName = productImageURL;
+	currentProduct.productURL = productURL;
+	
+	[currentCompany.products replaceObjectAtIndex:productId withObject: currentProduct];
+	
+}
+
+-(void) editCompanyWithCompanyId: (int) companyId  andWithCompanyName: (NSString*) companyName andWithStockSymbol: (NSString*) companyStockSymbol andCompanyImageName: (NSString*) companyImageName {
+
+	Company *currentCompany = self.companysList[companyId];
+	currentCompany.companyName = companyName;
+	currentCompany.companyStockSymbol = companyStockSymbol;
+	currentCompany.companyImageName = companyImageName;
+
+	//// What happens below?
+	[self.companysList replaceObjectAtIndex:companyId withObject: currentCompany];
+	
+}
+-(void) deleteProductWithId: (int) productId andCompanyId: (int) companyId product:  (NSString*) name andProductURL: (NSString*) productURL andWithProductImageURL: (NSString*) productImageURL {
+	
+	Company *currentCompany = self.companysList[companyId];
+	Product *currentProduct = currentCompany.products[productId];
+	currentProduct.productName = name;
+	currentProduct.productImageName = productImageURL;
+	currentProduct.productURL = productURL;
+	
+	[currentCompany.products removeObjectAtIndex:companyId];
+	
+}
+-(void) deleteCompanyWithCompanyId: (int) companyId  andWithCompanyName: (NSString*) companyName andWithStockSymbol: (NSString*) companyStockSymbol andCompanyImageName: (NSString*) companyImageName {
+	
+	Company *currentCompany = self.companysList[companyId];
+	currentCompany.companyName = companyName;
+	currentCompany.companyStockSymbol = companyStockSymbol;
+	currentCompany.companyImageName = companyImageName;
+	
+	//// What happens below?
+	[self.companysList removeObjectAtIndex:companyId];
+}
 @end
 
 

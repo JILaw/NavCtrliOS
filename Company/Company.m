@@ -7,14 +7,16 @@
 //
 
 #import "Company.h"
+#import "ProductVC.h"
 
 @implementation Company
 
--(instancetype) initWithCompanyName: (NSString*) companyName andWithCompanyImageName: (NSString*) companyImageName;
+-(instancetype) initWithCompanyName: (NSString*) companyName andWithCompanyStockSymbol: (NSString*) companyStockSymbol andWithCompanyImageName: (NSString*) companyImageName;
 {
 	self = [super init];
 	if (self) {
 		self.companyName = companyName;
+		self.companyStockSymbol = companyStockSymbol;
 		self.companyImageName = companyImageName;
 
 	}

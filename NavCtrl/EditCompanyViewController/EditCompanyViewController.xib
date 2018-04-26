@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment version="2304" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditCompanyViewController">
+            <connections>
+                <outlet property="companyImageNameData" destination="euJ-ar-0kh" id="wOn-6f-5zM"/>
+                <outlet property="companyNameData" destination="jKH-0c-K0d" id="b0d-vg-0CJ"/>
+                <outlet property="companyStockSymbolData" destination="iRm-61-AWi" id="vqZ-l8-Pnk"/>
+                <outlet property="scrollView" destination="daZ-Qe-2Lt" id="xnl-FJ-StK"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="daZ-Qe-2Lt">
+                    <rect key="frame" x="57" y="81" width="261" height="385"/>
+                    <subviews>
+                        <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iRm-61-AWi">
+                            <rect key="frame" x="20" y="210" width="221" height="30"/>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="euJ-ar-0kh">
+                            <rect key="frame" x="20" y="274" width="221" height="30"/>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ncc-WQ-K9m">
+                            <rect key="frame" x="77" y="334" width="106" height="30"/>
+                            <state key="normal" title="Delete">
+                                <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="deleteCompany:" destination="-1" eventType="touchUpInside" id="nVe-QV-op6"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Edit Company Form" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aih-yB-xFE">
+                            <rect key="frame" x="28" y="39" width="196" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jKH-0c-K0d">
+                            <rect key="frame" x="20" y="141" width="221" height="30"/>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                    </subviews>
+                    <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="jKH-0c-K0d" firstAttribute="trailing" secondItem="iRm-61-AWi" secondAttribute="trailing" id="4Ku-og-Nen"/>
+                        <constraint firstItem="Ncc-WQ-K9m" firstAttribute="centerX" secondItem="daZ-Qe-2Lt" secondAttribute="centerX" id="9Sj-Xd-nmY"/>
+                        <constraint firstItem="euJ-ar-0kh" firstAttribute="top" secondItem="iRm-61-AWi" secondAttribute="bottom" constant="39" id="Lsm-aE-HK7"/>
+                        <constraint firstAttribute="trailing" secondItem="jKH-0c-K0d" secondAttribute="trailing" constant="20" id="R4b-bt-Cmh"/>
+                        <constraint firstItem="Ncc-WQ-K9m" firstAttribute="leading" secondItem="daZ-Qe-2Lt" secondAttribute="leading" constant="77" id="ROI-hP-04z"/>
+                        <constraint firstItem="jKH-0c-K0d" firstAttribute="leading" secondItem="daZ-Qe-2Lt" secondAttribute="leading" constant="20" id="SFc-R7-K4z"/>
+                        <constraint firstItem="Ncc-WQ-K9m" firstAttribute="top" secondItem="euJ-ar-0kh" secondAttribute="bottom" constant="44" id="Uhk-Ix-LBz"/>
+                        <constraint firstAttribute="height" constant="385" id="VN6-Dr-eve"/>
+                        <constraint firstItem="iRm-61-AWi" firstAttribute="top" secondItem="jKH-0c-K0d" secondAttribute="bottom" constant="58" id="g78-md-WQr"/>
+                        <constraint firstItem="euJ-ar-0kh" firstAttribute="centerX" secondItem="Ncc-WQ-K9m" secondAttribute="centerX" id="gjX-qd-Smc"/>
+                        <constraint firstAttribute="bottom" secondItem="Ncc-WQ-K9m" secondAttribute="bottom" constant="21" id="gsF-Rn-SJv"/>
+                        <constraint firstItem="iRm-61-AWi" firstAttribute="leading" secondItem="euJ-ar-0kh" secondAttribute="leading" id="jde-SK-o2W"/>
+                        <constraint firstItem="jKH-0c-K0d" firstAttribute="top" secondItem="daZ-Qe-2Lt" secondAttribute="top" constant="141" id="oc7-fC-tVS"/>
+                        <constraint firstItem="jKH-0c-K0d" firstAttribute="leading" secondItem="iRm-61-AWi" secondAttribute="leading" id="pOo-JP-9SC"/>
+                        <constraint firstItem="iRm-61-AWi" firstAttribute="trailing" secondItem="euJ-ar-0kh" secondAttribute="trailing" id="zAn-Jw-wTm"/>
+                    </constraints>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="daZ-Qe-2Lt" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="57" id="W2Q-fi-twk"/>
+                <constraint firstItem="daZ-Qe-2Lt" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="61" id="gHG-dt-taO"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="daZ-Qe-2Lt" secondAttribute="trailing" constant="57" id="px9-lO-E4z"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
+            <point key="canvasLocation" x="-2456" y="201"/>
+        </view>
+    </objects>
+</document>

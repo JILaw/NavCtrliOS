@@ -10,9 +10,12 @@
 #import "Company.h"
 #import "Product.h"
 #import "DataAccessObject.h"
+#import "AddCompanyViewController.h"
+#import "EditCompanyViewController.h"
 
 @interface CompanyVC () {
 	DataAccessObject *dao;
+	EditCompanyViewController *editingVC;
 }
 
 @end
@@ -31,73 +34,69 @@
 	
 	
 	
-	dao = [[DataAccessObject alloc] init];
+	dao = [DataAccessObject sharedDAO];
 	[dao createDemoCompanys];
 	
 	self.companies = [dao companysList];
 	
-	NSLog(@"YI Company name is %@ and product name %@", self.companies[0].companyName, self.companies[0].products[0].productName);
-	NSLog (@"The list of companies is: %@", [dao companysList]);
+
 	
 	UINavigationBar *navbar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 50)];
-	[navbar setBackgroundColor:[UIColor greenColor]];
+	//[navbar setBackgroundColor: [UIColor greenColor]];
+	self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:29.0f/255.0f green:159.0f/255.0f blue:74.0f/255.0f alpha:1.0f];
+	
 	self.navigationItem.title = @"Mobile Devices";
+    [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName,nil]];
+	
+	[self.view addSubview:navbar];
+
 	
 	
-//
-//	 UINavigationItem *navItem = [[UINavigationItem alloc] initWithTitle:@"Mobile Devices"];
-//
-//	/* Assign the navigation item to the navigation bar.*/
-//	[navbar setItems:@[navItem]];
-//
-//	/* add navigation bar to the root view.*/
-//	[self.view addSubview:navbar];
-//
-	
-	//[[self navigationBar setTitle:@"Mobile Devices"];
-	
-	
-	//UINavigationItem *navItem = [[UINavigationItem alloc] initWithTitle:@"Mobile Device Makers"];
-	
-	//[navbar ]
-	//[navbar setItems:@[navItem]];
-	//[self.view addSubview:navbar];
-	
-	
-	//[self.navigationBar setBarTintColor:UIColor.greenColor];
 	
 	// Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     
     UIBarButtonItem *editButton = [[UIBarButtonItem alloc]initWithTitle:@"Edit" style:UIBarButtonItemStylePlain target:self action:@selector(toggleEditMode)];
     self.navigationItem.leftBarButtonItem = editButton;
-//	self.navigationItem.leftBarButtonItem.tintColor = [UIColor whiteColor];
+	self.navigationItem.leftBarButtonItem.tintColor = [UIColor whiteColor];
 	
 	
 	
 	
 	
-	//ADDING 'ADD' BUTTON TRIAL CODE BELOW
+	// 'ADD COMPANY' BUTTON CODE BELOW
 	
-	UIImage *addButtonImage = [[UIImage imageNamed:@"btn-navAdd"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-	UIBarButtonItem *addCompanybutton = [[UIBarButtonItem alloc] initWithImage:addButtonImage style:UIBarButtonItemStylePlain target:self action:@selector(addCompany:)];
+	UIImage *addCompanyButtonImage = [[UIImage imageNamed:@"btn-navAdd"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+	
+	UIBarButtonItem *addCompanybutton = [[UIBarButtonItem alloc] initWithImage:addCompanyButtonImage style:UIBarButtonItemStylePlain target:self action:@selector(addCompany:)];
 	self.navigationItem.rightBarButtonItem = addCompanybutton;
-	
-
-	
-	
-	
-	//self.companyList = [[NSMutableArray alloc] initWithObjects: @"Apple mobile devices", @"Google mobile devices", @"Tesla mobile devices", @"Twitter mobile devices", nil];
-	
-	
-	//self.title = @"Mobile device makers";
+	self.navigationItem.rightBarButtonItem.tintColor = [UIColor whiteColor];
 	
 	self.productViewController = [[ProductVC alloc]init];
 	
+	// Initialize the addCompanyViewController
+	self.addCompanyViewController = [[AddCompanyViewController alloc]init];
+	
+	editingVC = [[EditCompanyViewController alloc] init];
+	
 }
 
-- (void)addCompany {
+-(void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
 	
-	// code to load new VC here !
+	[_tableView reloadData];
+	self.companies = [dao companysList];
+}
+
+- (void)addCompany: (id) sender  {
+	// push to new view controller
+	[self.navigationController
+	 pushViewController: self.addCompanyViewController
+	 animated:YES];
+	
+	
+	
+	
+	
 }
 
 - (void)toggleEditMode {
@@ -132,6 +131,7 @@
     // Return the number of rows in the section.
 	// first OOP change
     return [self.companies count];
+//	return [[dao companysList] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -145,15 +145,6 @@
     // Configure the cell...
 	
 	
-	
-	
-	
-    //cell.textLabel.text = [self.companyList objectAtIndex:[indexPath row]];
-	
-	// second OOP change
-	//cell.textLabel.text = [[self.companies objectAtIndex:[indexPath row]] companyName] ;
-	//cell.textLabel.text = self.companies[indexPath.row].companyName;
-	
 	Company *selectedCompany = self.companies[indexPath.row];
 	
 	cell.textLabel.text = selectedCompany.companyName;
@@ -161,9 +152,11 @@
 	
 	
 	
-	//NSString *companyImageStringName = [self.companyImagesArray objectAtIndex: [indexPath row]];
+	
 	// third OOP change
 	NSString *companyImageStringName = selectedCompany.companyImageName;
+	
+	
 	
 	cell.imageView.image = [UIImage imageNamed:companyImageStringName];
 	
@@ -187,21 +180,16 @@
  - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
  {
 	 
-	// Company *selectedCompany = self.companies[indexPath.row];
+	
 	 
 	 if (editingStyle == UITableViewCellEditingStyleDelete) {
 	 
 		// Data Deletion
 		// Delete the row from the data source, from the rows of company and images arrays (to avoid crash)
 		[self.companies removeObjectAtIndex: indexPath.row];
-		 
-		// since this data is no longer stored in an array, but instead is stored on properties of objects ... do we still need to do anything here?
-		 
-		// **OOP changes below??**
-		//[_companyImagesArray removeObjectAtIndex: indexPath.row];
 
 		// UI Deletion
-		 [tableView deleteRowsAtIndexPaths: [NSMutableArray arrayWithObject: indexPath] withRowAnimation:UITableViewRowAnimationFade];
+		[tableView deleteRowsAtIndexPaths: [NSMutableArray arrayWithObject: indexPath] withRowAnimation:UITableViewRowAnimationFade];
 	 
 		 //[tableView reloadData];
 	 }
@@ -232,18 +220,16 @@
 	
 	// Data Move is done below
 	
-	// keep the object at fromindex to a temp variable
-	// fourth, fifth OOP change  AGAIN: these are not arrays now so.... ???
+	
 	Company *objectToBeMoved = [_companies objectAtIndex:[fromIndexPath row]];
-	//NSString *imageToBeMoved = [selectedCompany.companyImageName objectAtIndex: [fromIndexPath row]];
+	
 	
 	
 	
 	// remove the object(s) from from index
-	//[self.companyList removeObject:objectToBeMoved];
+	
 	[self.companies removeObjectAtIndex: fromIndexPath.row];
-	//[_companyImagesArray removeObjectAtIndex: fromIndexPath.row];
-	//[self.companyImagesArray removeObject:imageToBeMoved];
+	
 	
 	// add the object back from temp to toindex
 	[self.companies insertObject:objectToBeMoved atIndex:[toIndexPath row]];
@@ -264,29 +250,35 @@
 // In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-//     if (indexPath.row == 0) {
-//        self.productViewController.title = @"Apple mobile devices";
-//    } else if (indexPath.row == 1) {
-//        self.productViewController.title = @"Google mobile devices";
-//	} else if (indexPath.row == 2)  {
-//		self.productViewController.title = @"Tesla mobile devices";
-//	} else {
-//		self.productViewController.title = @"Twitter mobile devices";
-//	}
-//
+	
+	if  (self.tableView.editing) {
+		editingVC.title = @"Edit Company";
+		
+//		Company *currentCompany = dao.companysList[indexPath.row];
+		
+		editingVC.selectedCompany = dao.companysList[indexPath.row];
+		editingVC.companyId = (int)indexPath.row;
+		
+		[self.navigationController
+		 pushViewController: editingVC
+		 animated:YES];
+	} else {
+		
+		
 	
 	self.productViewController.title = self.companies[indexPath.row].companyName;
-	
 	self.productViewController.products = self.companies[indexPath.row].products;
+	self.productViewController.companyImageName = self.companies[indexPath.row].companyImageName;
+	
+	self.productViewController.companyId = (int)indexPath.row;
 	
     [self.navigationController
      pushViewController:self.productViewController
      animated:YES];
     
+	}
+
 }
-
-
 /*
 #pragma mark - Navigation
 

@@ -10,6 +10,8 @@
 #import "DetailViewController.h"
 #import "Product.h"
 #import "DataAccessObject.h"
+#import "AddProductViewController.h"
+#import "CompanyVC.h"
 
 
 
@@ -17,8 +19,12 @@
 	
 	DataAccessObject *dao;
 
-
+	IBOutlet UIImageView *productImage;
+	
+	
+	
 }
+
 @end
 
 @implementation ProductVC
@@ -26,11 +32,48 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
-	UIBarButtonItem *editButton = [[UIBarButtonItem alloc]initWithTitle:@"Edit" style:UIBarButtonItemStylePlain target:self action:@selector(toggleEditMode)];
-	self.navigationItem.rightBarButtonItem = editButton;
+	UINavigationBar *navbar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 50)];
+	[navbar setBackgroundColor:[UIColor greenColor]];
+	
+	[self.view addSubview:navbar];
+	
+//	UIBarButtonItem *editButton = [[UIBarButtonItem alloc]initWithTitle:@"Edit" style:UIBarButtonItemStylePlain target:self action:@selector(toggleEditMode)];
+//	self.navigationItem.rightBarButtonItem = editButton;
+//	self.navigationItem.rightBarButtonItem.tintColor = [UIColor whiteColor];
+	
+	// 'ADD PRODUCT' BUTTON CODE BELOW
+	
+	UIImage *addProductButtonImage = [[UIImage imageNamed:@"btn-navAdd"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+	
+	UIBarButtonItem *addProductButton = [[UIBarButtonItem alloc] initWithImage:addProductButtonImage style:UIBarButtonItemStylePlain target:self action:@selector(addProduct:)];
+	self.navigationItem.rightBarButtonItem = addProductButton;
+	self.navigationItem.rightBarButtonItem.tintColor = [UIColor whiteColor];
+	
+	UIImage *backButtonImage = [[UIImage imageNamed:@"btn-navBack"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+	
+	UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:backButtonImage style:UIBarButtonItemStylePlain target:self action:@selector(back:)];
+	self.navigationItem.leftBarButtonItem = backButton;
+	self.navigationItem.leftBarButtonItem.tintColor = [UIColor whiteColor];
+	
+	
+	
     // Do any additional setup after loading the view from its nib.
+	self.addProductViewController = [[AddProductViewController alloc]init];
 	
+}
+
+- (void) back: (id) sender {
+	[self.navigationController popViewControllerAnimated:YES];
 	
+}
+
+- (void) addProduct: (id) sender {
+	
+	self.addProductViewController.companyId = self.companyId;
+	
+	[self.navigationController
+	 pushViewController: self.addProductViewController
+	 animated:YES];
 }
 
 - (void)toggleEditMode {
@@ -49,21 +92,7 @@
     
     [super viewWillAppear:animated];
 	
-	
-	
-//    if ([self.title isEqualToString:@"Apple mobile devices"]) {
-//		self.products = appleProducts;
-//		self.productsImagesArray = appleProductImagesArray;
-//    } else if ([self.title isEqualToString:@"Google mobile devices"]) {
-//		self.products = googleProducts;
-//		self.productsImagesArray = googleProductImagesArray;
-//    } else if ([self.title isEqualToString:@"Tesla mobile devices"]) {
-//		self.products = teslaProducts;
-//		self.productsImagesArray = teslaProductImagesArray;
-//	} else if ([self.title isEqualToString:@"Twitter mobile devices"]){
-//		self.products = twitterProducts;
-//		self.productsImagesArray = twitterProductImagesArray;
-//	}
+	productImage.image = [UIImage imageNamed: self.companyImageName];
 	
 	[self.tableView reloadData];
 
@@ -108,27 +137,14 @@
 	Product *selectedProduct = self.products[indexPath.row];
 	
 	cell.textLabel.text = selectedProduct.productName;
+	
+	//check if you have image in assets or download from URL (??)
+	//if UIImage == UIImage imageNamed: selectedProduct.productImageName {
+	// } else { downloding functionality}
+	
 	cell.imageView.image = [UIImage imageNamed: selectedProduct.productImageName];
 	
-
-	
-// original non-OOP code below
-// NSString *productImageStringName = selectedProduct.productImageName;
-//
-//	cell.imageView.image = [UIImage imageNamed: productImageStringName];
-	
-	
-	
-// cell.textLabel.text = [self.products objectAtIndex:[indexPath row]];
-//
-//
-// cell.imageView.image = [UIImage imageNamed: [self.productsImagesArray objectAtIndex: [indexPath row]]];
-	
-	
-
-	
-	
-    return cell;
+	return cell;
 }
 
 
@@ -222,12 +238,11 @@
 	DetailViewController *detailViewController = [[DetailViewController alloc] init];
 	 
 // Pass the selected object to the new view controller.
-//	 NSString *selectedProduct = [self.products objectAtIndex: [indexPath row]];
-	 
- //    detailViewController.productName = selectedProduct;
 	 
 	 detailViewController.productURL = self.products[indexPath.row].productURL;
-	 
+	 detailViewController.selectedProduct = self.products[indexPath.row];
+	 detailViewController.companyId = self.companyId;
+	 detailViewController.productId = (int)indexPath.row;
 	
  
  // Push the new view controller.
@@ -240,7 +255,8 @@
 
 - (void)dealloc {
     [_tableView release];
-    [super dealloc];
+	[productImage release];
+	[super dealloc];
 }
 	@end
 	

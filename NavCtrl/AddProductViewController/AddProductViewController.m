@@ -1,79 +1,68 @@
 //
-//  DetailViewController.m
+//  AddProductViewController.m
 //  NavCtrl
 //
-//  Created by PK/PQ Computer on 3/22/18.
+//  Created by PK/PQ Computer on 4/16/18.
 //  Copyright © 2018 Aditya Narayan. All rights reserved.
 //
 
-#import "DetailViewController.h"
-#import "DataAccessObject.h"
+#import "AddProductViewController.h"
+
+@interface AddProductViewController ()
+@property (retain, nonatomic) IBOutlet UITextField *productNameData;
+
+@property (retain, nonatomic) IBOutlet UITextField *productURLData;
+
+@property (retain, nonatomic) IBOutlet UITextField *productImageURLData;
 
 
-@interface DetailViewController () <WKNavigationDelegate,WKUIDelegate>
 
 
 @end
 
-@implementation DetailViewController
-
-
+@implementation AddProductViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	
-	self.editProductViewController = [[EditProductViewController alloc]init];
-	
-	
+    // Do any additional setup after loading the view from its nib.
 	UINavigationBar *navbar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 50)];
 	[navbar setBackgroundColor: [UIColor greenColor]];
-	self.navigationItem.title = @"Product Link";
+	self.navigationItem.title = @"Add Product";
 	[self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName,nil]];
 	
 	[self.view addSubview:navbar];
 	
-	UIBarButtonItem *editButton = [[UIBarButtonItem alloc]initWithTitle:@"Edit" style:UIBarButtonItemStylePlain target:self action:@selector(launchEditPage:)];
-	self.navigationItem.rightBarButtonItem = editButton;
-	self.navigationItem.rightBarButtonItem.tintColor = [UIColor whiteColor];
 	
+	UIBarButtonItem *saveButton = [[UIBarButtonItem alloc]initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(saveProductData:)];
+	self.navigationItem.rightBarButtonItem = saveButton;
+	self.navigationItem.rightBarButtonItem.tintColor = [UIColor whiteColor];
 	
 	UIImage *backButtonImage = [[UIImage imageNamed:@"btn-navBack"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
 	
 	UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:backButtonImage style:UIBarButtonItemStylePlain target:self action:@selector(back:)];
 	self.navigationItem.leftBarButtonItem = backButton;
 	self.navigationItem.leftBarButtonItem.tintColor = [UIColor whiteColor];
-
 	
-	
-	NSURL *url = [NSURL URLWithString: self.productURL];
-	NSURLRequest *request = [NSURLRequest requestWithURL:url];
-	_webView = [[WKWebView alloc]init] ;
-	_webView.UIDelegate = self;
-	_webView.navigationDelegate = self;
-	[_webView loadRequest:request];
-	_webView.frame = CGRectMake(self.view.frame.origin.x,85, self.view.frame.size.width, self.view.frame.size.height-85);
-	
-	[self.view addSubview:_webView];
-    // Do any additional setup after loading the view from its nib.
 }
 
+- (void) saveProductData: (id) sender {
+	
+	Product *tempProduct = [[Product alloc] initWithProductName:self.productNameData.text andWithProductImageName:self.productImageURLData.text andWithProductURL:self.productURLData.text];
+	
+	
+	
+	
+	[[DataAccessObject sharedDAO] addProduct:tempProduct companyId: self.companyId];
+	
+	
+
+}
 
 - (void) back: (id) sender {
 	[self.navigationController popViewControllerAnimated:YES];
 	
 }
 
-- (void) launchEditPage: (id) sender {
-	self.editProductViewController.selectedProduct = self.selectedProduct;
-	self.editProductViewController.productId = self.productId;
-	self.editProductViewController.companyId = self.companyId;
-	
-	[self.navigationController
-	 pushViewController: self.editProductViewController
-	 animated:YES];
-	
-	
-}
 
 
 - (void)didReceiveMemoryWarning {
@@ -91,4 +80,10 @@
 }
 */
 
+- (void)dealloc {
+	[_productNameData release];
+	[_productURLData release];
+	[_productImageURLData release];
+	[super dealloc];
+}
 @end
