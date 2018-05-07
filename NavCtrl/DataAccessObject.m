@@ -29,10 +29,10 @@
 -(void) createDemoCompanys {
 	
 	// Companies...
-	Company *apple = [[Company alloc] initWithCompanyName:@"Apple mobile devices" andWithCompanyStockSymbol: @"" andWithCompanyImageName:@"img-companyLogo_Apple.png"];
-	Company *google = [[Company alloc] initWithCompanyName:@"Google mobile devices" andWithCompanyStockSymbol: @"" andWithCompanyImageName:@"img-companyLogo_Google.png"];
-	Company *tesla = [[Company alloc] initWithCompanyName:@"Tesla mobile devices" andWithCompanyStockSymbol: @"" andWithCompanyImageName:@"img-companyLogo_Tesla"];
-	Company *twitter = [[Company alloc] initWithCompanyName:@"Twitter mobile devices" andWithCompanyStockSymbol: @"" andWithCompanyImageName:@"img-companyLogo_Twitter.png"];
+	Company *apple = [[Company alloc] initWithCompanyName:@"Apple" andWithCompanyStockSymbol: @"AAPL" andWithCompanyImageName:@"http://simpleicon.com/wp-content/uploads/apple-128x128.png"];
+	Company *google = [[Company alloc] initWithCompanyName:@"Google" andWithCompanyStockSymbol: @"GOOG" andWithCompanyImageName:@"http://simpleicon.com/wp-content/uploads/google_chrome_1.png"];
+	Company *tesla = [[Company alloc] initWithCompanyName:@"Tesla" andWithCompanyStockSymbol: @"TSLA" andWithCompanyImageName:@"http://www.timtyson.us/wordpress/wp-content/uploads/2014/06/Tesla-Logo.png"];
+	Company *twitter = [[Company alloc] initWithCompanyName:@"Twitter" andWithCompanyStockSymbol: @"TWTR" andWithCompanyImageName:@"http://simpleicon.com/wp-content/uploads/twitter_3-150x150.png"];
 
 	// Products...
 	Product *iPad = [[Product alloc] initWithProductName: @"iPad" andWithProductImageName: @"img-Product-1.png" andWithProductURL: @"https://www.apple.com/ipad-9.7/"];
@@ -86,7 +86,7 @@
 	
 }
 
--(void)addCompany:(Company *)company {
+-(void) addCompany:(Company *)company {
 	[_companysList addObject: company];
 }
 

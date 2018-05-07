@@ -53,7 +53,7 @@
 	
 	Company *tempComp = [[Company alloc] initWithCompanyName:self.companyNameData.text andWithCompanyStockSymbol: self.companyStockSymbolData.text andWithCompanyImageName: self.companyURLData.text];
 	
-//	Company *tempComp = [[Company alloc] initWithCompanyName: self.CompanyNameData.text andWithCompanyStockSymbolData: self.CompanyStockSymbolData.text andWithCompanyURLData: self.CompanyURLData.text];
+
 	
 	[[DataAccessObject sharedDAO] addCompany:tempComp];
 	

@@ -11,7 +11,9 @@
 #import "Company.h"
 #import "AddCompanyViewController.h"
 
-@interface CompanyVC : UIViewController<UITableViewDelegate, UITableViewDataSource>
+#import "StockFetcherDelegate.h"
+
+@interface CompanyVC : UIViewController<UITableViewDelegate, UITableViewDataSource, StockFetcherDelegate>
 
 @property (retain, nonatomic) IBOutlet UITableView *tableView;
 
@@ -24,4 +26,5 @@
 @property (nonatomic, retain) AddCompanyViewController *addCompanyViewController;
 
 //@property (nonatomic, retain) NSMutableArray<NSString*> *companyImagesArray;
+@property (strong, nonatomic) NSString *companyStockPrice;
 @end

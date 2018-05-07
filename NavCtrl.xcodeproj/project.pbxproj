@@ -38,6 +38,8 @@
 		F86A9A94208523B800CEFE19 /* AddProductViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F86A9A92208523B800CEFE19 /* AddProductViewController.m */; };
 		F86A9A95208523B800CEFE19 /* AddProductViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F86A9A93208523B800CEFE19 /* AddProductViewController.xib */; };
 		F89DC36D208FDC5C00DBD8DD /* EditProductViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F89DC36C208FDC5C00DBD8DD /* EditProductViewController.m */; };
+		F8C3953A20976C850099FD72 /* StockFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = F8C3953920976C850099FD72 /* StockFetcher.m */; };
+		F8D39ADF20A0D54400A71916 /* cupertino-activity-indicator.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D39ADE20A0D54300A71916 /* cupertino-activity-indicator.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +98,10 @@
 		F86A9A92208523B800CEFE19 /* AddProductViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddProductViewController.m; sourceTree = "<group>"; };
 		F86A9A93208523B800CEFE19 /* AddProductViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddProductViewController.xib; sourceTree = "<group>"; };
 		F89DC36C208FDC5C00DBD8DD /* EditProductViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditProductViewController.m; sourceTree = "<group>"; };
+		F8C3953820976C850099FD72 /* StockFetcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StockFetcher.h; sourceTree = "<group>"; };
+		F8C3953920976C850099FD72 /* StockFetcher.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StockFetcher.m; sourceTree = "<group>"; };
+		F8C3953B20976CD10099FD72 /* StockFetcherDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StockFetcherDelegate.h; sourceTree = "<group>"; };
+		F8D39ADE20A0D54300A71916 /* cupertino-activity-indicator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cupertino-activity-indicator.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +193,7 @@
 		48A656BA18163BF200746D36 /* NavCtrl */ = {
 			isa = PBXGroup;
 			children = (
+				F8C3953C20977E600099FD72 /* StockFetcher */,
 				F80DF688208FD48A00AFC12E /* EditCompanyViewController */,
 				F80DF682208F839E00AFC12E /* EditProductViewController */,
 				F86A9A96208523C500CEFE19 /* AddProductViewController */,
@@ -204,6 +211,7 @@
 		48A656BB18163BF200746D36 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F8D39ADE20A0D54300A71916 /* cupertino-activity-indicator.png */,
 				48A656BC18163BF200746D36 /* NavCtrl-Info.plist */,
 				48A656BD18163BF200746D36 /* InfoPlist.strings */,
 				48A656ED1816468000746D36 /* Sunflower.gif */,
@@ -310,6 +318,16 @@
 			path = AddProductViewController;
 			sourceTree = "<group>";
 		};
+		F8C3953C20977E600099FD72 /* StockFetcher */ = {
+			isa = PBXGroup;
+			children = (
+				F8C3953820976C850099FD72 /* StockFetcher.h */,
+				F8C3953920976C850099FD72 /* StockFetcher.m */,
+				F8C3953B20976CD10099FD72 /* StockFetcherDelegate.h */,
+			);
+			name = StockFetcher;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -386,6 +404,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8D39ADF20A0D54400A71916 /* cupertino-activity-indicator.png in Resources */,
 				9E62FF291E4A3982002D55B8 /* Launch Screen.storyboard in Resources */,
 				48A656EE1816468000746D36 /* Sunflower.gif in Resources */,
 				9E62FF221E4A33DC002D55B8 /* CompanyVC.xib in Resources */,
@@ -420,6 +439,7 @@
 				F80DF686208FD48400AFC12E /* EditCompanyViewController.m in Sources */,
 				F864751F206C010A002A5DD2 /* Product.m in Sources */,
 				9E62FF211E4A33DC002D55B8 /* CompanyVC.m in Sources */,
+				F8C3953A20976C850099FD72 /* StockFetcher.m in Sources */,
 				F864751B206C00C3002A5DD2 /* Company.m in Sources */,
 				F852C6AE20642ADD001550E7 /* DetailViewController.m in Sources */,
 				48A656C518163BF200746D36 /* NavControllerAppDelegate.m in Sources */,

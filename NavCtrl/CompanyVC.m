@@ -12,11 +12,18 @@
 #import "DataAccessObject.h"
 #import "AddCompanyViewController.h"
 #import "EditCompanyViewController.h"
+#import "StockFetcher.h"
 
 @interface CompanyVC () {
 	DataAccessObject *dao;
 	EditCompanyViewController *editingVC;
+	Company *company;
+	
 }
+
+@property (strong, nonatomic) StockFetcher *stockFetcher;
+
+
 
 @end
 
@@ -28,18 +35,32 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
+	
+	
+	self.tableView.delegate = self;
+	
 
 	// Do any additional setup after loading the view from its nib.
 
+	
+	
+	self.stockFetcher = [[StockFetcher alloc]init];
+	self.stockFetcher.delegate = self;
+	
+	
+	
 	
 	
 	
 	dao = [DataAccessObject sharedDAO];
 	[dao createDemoCompanys];
 	
+	[self.stockFetcher fetchStockPrice];
+
+	
 	self.companies = [dao companysList];
 	
-
+	
 	
 	UINavigationBar *navbar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 50)];
 	//[navbar setBackgroundColor: [UIColor greenColor]];
@@ -139,7 +160,9 @@
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+		
+		// changed below to StyleSubtitle
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     
     // Configure the cell...
@@ -147,21 +170,52 @@
 	
 	Company *selectedCompany = self.companies[indexPath.row];
 	
-	cell.textLabel.text = selectedCompany.companyName;
+
+	
+	
+
+	
+	NSString *combinedCompanyAndStockSymbolText = [selectedCompany.companyName stringByAppendingFormat: @" (%@)", selectedCompany.companyStockSymbol];
+	
+	cell.textLabel.text = combinedCompanyAndStockSymbolText;
+	cell.detailTextLabel.text = selectedCompany.companyStockPrice;
+
 	
 	
 	
 	
 	
-	// third OOP change
-	NSString *companyImageStringName = selectedCompany.companyImageName;
+	
+	//NSString *companyImageStringName = selectedCompany.companyImageName;
+	
+	//cell.imageView.image = [UIImage imageNamed:companyImageStringName];
 	
 	
+	// GET IMAGE USING URL BELOW
+	// http://simpleicon.com/wp-content/uploads/apple-128x128.png
 	
-	cell.imageView.image = [UIImage imageNamed:companyImageStringName];
 	
+	cell.imageView.image = [UIImage imageNamed:@"cupertino-activity-indicator"];
+	dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
+	dispatch_async(queue, ^{
+		NSURL *url = [NSURL URLWithString: selectedCompany.companyImageName];
+		NSData *data = [NSData dataWithContentsOfURL:url];
+		UIImage *image = [UIImage imageWithData:data];
+		dispatch_async(dispatch_get_main_queue(), ^{
+			cell.imageView.image = image;
+		});
+	});
 	
-    
+
+	
+//	NSURL *url = [NSURL URLWithString:selectedCompany.companyImageName];
+//
+//	NSData *data = [NSData dataWithContentsOfURL:url];
+//	UIImage *image = [UIImage imageWithData:data];
+//
+//	//cell.imageView.image = image;
+//	[cell.imageView setImage:image];
+	
     return cell;
 }
 
@@ -292,5 +346,23 @@
 - (void)dealloc {
     [_tableView release];
     [super dealloc];
+}
+
+-(void)stockFetchSuccessWithPriceString {
+	
+	[self.tableView reloadData];
+}
+
+
+#pragma mark Optional Delegate Methods
+
+-(void)stockFetchDidFailWithError:(NSError *)error {
+	NSLog(@"Couldn't fetch stock price, this is a description of the error:%@", error.localizedDescription);
+	//do some sort of error handling here
+}
+
+-(void)stockFetchDidStart {
+	NSLog(@"Initiating stock fetch...");
+	//could start an activity indicator here
 }
 @end
