@@ -32,14 +32,15 @@
 		F852C6AF20642ADD001550E7 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F852C6AD20642ADD001550E7 /* DetailViewController.xib */; };
 		F864751B206C00C3002A5DD2 /* Company.m in Sources */ = {isa = PBXBuildFile; fileRef = F864751A206C00C3002A5DD2 /* Company.m */; };
 		F864751F206C010A002A5DD2 /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = F864751E206C010A002A5DD2 /* Product.m */; };
-		F8647523206C2446002A5DD2 /* DataAccessObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F8647522206C2446002A5DD2 /* DataAccessObject.m */; };
 		F86A9A8E2085231B00CEFE19 /* AddCompanyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F86A9A8C2085231B00CEFE19 /* AddCompanyViewController.m */; };
 		F86A9A8F2085231B00CEFE19 /* AddCompanyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F86A9A8D2085231B00CEFE19 /* AddCompanyViewController.xib */; };
 		F86A9A94208523B800CEFE19 /* AddProductViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F86A9A92208523B800CEFE19 /* AddProductViewController.m */; };
 		F86A9A95208523B800CEFE19 /* AddProductViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F86A9A93208523B800CEFE19 /* AddProductViewController.xib */; };
+		F89D09BD20A222C300D8F371 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F89D09BB20A222C300D8F371 /* Model.xcdatamodeld */; };
 		F89DC36D208FDC5C00DBD8DD /* EditProductViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F89DC36C208FDC5C00DBD8DD /* EditProductViewController.m */; };
 		F8C3953A20976C850099FD72 /* StockFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = F8C3953920976C850099FD72 /* StockFetcher.m */; };
-		F8D39ADF20A0D54400A71916 /* cupertino-activity-indicator.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D39ADE20A0D54300A71916 /* cupertino-activity-indicator.png */; };
+		F8D39AE420A0E52900A71916 /* DataAccessObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F8D39AE220A0E52800A71916 /* DataAccessObject.m */; };
+		F8D39AE720A0EE6A00A71916 /* default.png in Resources */ = {isa = PBXBuildFile; fileRef = F8D39AE620A0EE6900A71916 /* default.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,19 +90,20 @@
 		F864751A206C00C3002A5DD2 /* Company.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Company.m; sourceTree = "<group>"; };
 		F864751D206C010A002A5DD2 /* Product.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Product.h; sourceTree = "<group>"; };
 		F864751E206C010A002A5DD2 /* Product.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Product.m; sourceTree = "<group>"; };
-		F8647521206C2446002A5DD2 /* DataAccessObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataAccessObject.h; sourceTree = "<group>"; };
-		F8647522206C2446002A5DD2 /* DataAccessObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataAccessObject.m; sourceTree = "<group>"; };
 		F86A9A8B2085231B00CEFE19 /* AddCompanyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddCompanyViewController.h; sourceTree = "<group>"; };
 		F86A9A8C2085231B00CEFE19 /* AddCompanyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddCompanyViewController.m; sourceTree = "<group>"; };
 		F86A9A8D2085231B00CEFE19 /* AddCompanyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddCompanyViewController.xib; sourceTree = "<group>"; };
 		F86A9A91208523B800CEFE19 /* AddProductViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddProductViewController.h; sourceTree = "<group>"; };
 		F86A9A92208523B800CEFE19 /* AddProductViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddProductViewController.m; sourceTree = "<group>"; };
 		F86A9A93208523B800CEFE19 /* AddProductViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddProductViewController.xib; sourceTree = "<group>"; };
+		F89D09BC20A222C300D8F371 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		F89DC36C208FDC5C00DBD8DD /* EditProductViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditProductViewController.m; sourceTree = "<group>"; };
 		F8C3953820976C850099FD72 /* StockFetcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StockFetcher.h; sourceTree = "<group>"; };
 		F8C3953920976C850099FD72 /* StockFetcher.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StockFetcher.m; sourceTree = "<group>"; };
 		F8C3953B20976CD10099FD72 /* StockFetcherDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StockFetcherDelegate.h; sourceTree = "<group>"; };
-		F8D39ADE20A0D54300A71916 /* cupertino-activity-indicator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cupertino-activity-indicator.png"; sourceTree = "<group>"; };
+		F8D39AE220A0E52800A71916 /* DataAccessObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataAccessObject.m; sourceTree = "<group>"; usesTabs = 1; };
+		F8D39AE320A0E52800A71916 /* DataAccessObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataAccessObject.h; sourceTree = "<group>"; };
+		F8D39AE620A0EE6900A71916 /* default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,9 +162,6 @@
 		48A656A818163BF200746D36 = {
 			isa = PBXGroup;
 			children = (
-				F8647520206C0116002A5DD2 /* Product */,
-				F864751C206C00D6002A5DD2 /* Company */,
-				F8647524206C245D002A5DD2 /* (DAO) Data Access Object */,
 				48A656BA18163BF200746D36 /* NavCtrl */,
 				48A656D318163BF200746D36 /* NavCtrlTests */,
 				48A656B318163BF200746D36 /* Frameworks */,
@@ -193,7 +192,7 @@
 		48A656BA18163BF200746D36 /* NavCtrl */ = {
 			isa = PBXGroup;
 			children = (
-				F8C3953C20977E600099FD72 /* StockFetcher */,
+				F8D39AE020A0E45800A71916 /* Model */,
 				F80DF688208FD48A00AFC12E /* EditCompanyViewController */,
 				F80DF682208F839E00AFC12E /* EditProductViewController */,
 				F86A9A96208523C500CEFE19 /* AddProductViewController */,
@@ -211,7 +210,7 @@
 		48A656BB18163BF200746D36 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				F8D39ADE20A0D54300A71916 /* cupertino-activity-indicator.png */,
+				F8D39AE620A0EE6900A71916 /* default.png */,
 				48A656BC18163BF200746D36 /* NavCtrl-Info.plist */,
 				48A656BD18163BF200746D36 /* InfoPlist.strings */,
 				48A656ED1816468000746D36 /* Sunflower.gif */,
@@ -288,16 +287,6 @@
 			path = Product;
 			sourceTree = "<group>";
 		};
-		F8647524206C245D002A5DD2 /* (DAO) Data Access Object */ = {
-			isa = PBXGroup;
-			children = (
-				F8647521206C2446002A5DD2 /* DataAccessObject.h */,
-				F8647522206C2446002A5DD2 /* DataAccessObject.m */,
-			);
-			name = "(DAO) Data Access Object";
-			path = NavCtrl;
-			sourceTree = "<group>";
-		};
 		F86A9A902085232700CEFE19 /* AddCompanyViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -318,14 +307,35 @@
 			path = AddProductViewController;
 			sourceTree = "<group>";
 		};
-		F8C3953C20977E600099FD72 /* StockFetcher */ = {
+		F8D39AE020A0E45800A71916 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F8D39AE520A0E53800A71916 /* Stock Fetcher */,
+				F8D39AE120A0E4EE00A71916 /* Data Access Object */,
+				F864751C206C00D6002A5DD2 /* Company */,
+				F8647520206C0116002A5DD2 /* Product */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F8D39AE120A0E4EE00A71916 /* Data Access Object */ = {
+			isa = PBXGroup;
+			children = (
+				F8D39AE320A0E52800A71916 /* DataAccessObject.h */,
+				F8D39AE220A0E52800A71916 /* DataAccessObject.m */,
+				F89D09BB20A222C300D8F371 /* Model.xcdatamodeld */,
+			);
+			path = "Data Access Object";
+			sourceTree = "<group>";
+		};
+		F8D39AE520A0E53800A71916 /* Stock Fetcher */ = {
+			isa = PBXGroup;
+			children = (
+				F8C3953B20976CD10099FD72 /* StockFetcherDelegate.h */,
 				F8C3953820976C850099FD72 /* StockFetcher.h */,
 				F8C3953920976C850099FD72 /* StockFetcher.m */,
-				F8C3953B20976CD10099FD72 /* StockFetcherDelegate.h */,
 			);
-			name = StockFetcher;
+			path = "Stock Fetcher";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -373,7 +383,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = qcdDemo;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = "Aditya Narayan";
 				TargetAttributes = {
 					48A656CB18163BF200746D36 = {
@@ -404,7 +414,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F8D39ADF20A0D54400A71916 /* cupertino-activity-indicator.png in Resources */,
 				9E62FF291E4A3982002D55B8 /* Launch Screen.storyboard in Resources */,
 				48A656EE1816468000746D36 /* Sunflower.gif in Resources */,
 				9E62FF221E4A33DC002D55B8 /* CompanyVC.xib in Resources */,
@@ -416,6 +425,7 @@
 				48A656C718163BF200746D36 /* Images.xcassets in Resources */,
 				F80DF681208F838B00AFC12E /* EditProductViewController.xib in Resources */,
 				F86A9A95208523B800CEFE19 /* AddProductViewController.xib in Resources */,
+				F8D39AE720A0EE6A00A71916 /* default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,14 +447,15 @@
 				F86A9A94208523B800CEFE19 /* AddProductViewController.m in Sources */,
 				F86A9A8E2085231B00CEFE19 /* AddCompanyViewController.m in Sources */,
 				F80DF686208FD48400AFC12E /* EditCompanyViewController.m in Sources */,
+				F89D09BD20A222C300D8F371 /* Model.xcdatamodeld in Sources */,
 				F864751F206C010A002A5DD2 /* Product.m in Sources */,
+				F8D39AE420A0E52900A71916 /* DataAccessObject.m in Sources */,
 				9E62FF211E4A33DC002D55B8 /* CompanyVC.m in Sources */,
 				F8C3953A20976C850099FD72 /* StockFetcher.m in Sources */,
 				F864751B206C00C3002A5DD2 /* Company.m in Sources */,
 				F852C6AE20642ADD001550E7 /* DetailViewController.m in Sources */,
 				48A656C518163BF200746D36 /* NavControllerAppDelegate.m in Sources */,
 				F89DC36D208FDC5C00DBD8DD /* EditProductViewController.m in Sources */,
-				F8647523206C2446002A5DD2 /* DataAccessObject.m in Sources */,
 				48A656C118163BF200746D36 /* main.m in Sources */,
 				9E62FF261E4A33F1002D55B8 /* ProductVC.m in Sources */,
 			);
@@ -496,14 +507,20 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -541,14 +558,20 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -676,6 +699,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F89D09BB20A222C300D8F371 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F89D09BC20A222C300D8F371 /* Model.xcdatamodel */,
+			);
+			currentVersion = F89D09BC20A222C300D8F371 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 48A656A918163BF200746D36 /* Project object */;
 }

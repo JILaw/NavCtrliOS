@@ -6,11 +6,13 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CompanyVC">
             <connections>
+                <outlet property="buttonView" destination="euG-Wj-qiI" id="n07-DH-Su0"/>
                 <outlet property="tableView" destination="b9s-ce-C0v" id="jhV-HN-9fx"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -21,21 +23,64 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="b9s-ce-C0v">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="597"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="9E9-mh-79V"/>
                         <outlet property="delegate" destination="-1" id="rfX-ae-JqV"/>
                     </connections>
                 </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="euG-Wj-qiI">
+                    <rect key="frame" x="0.0" y="605" width="375" height="62"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yfd-zY-Yv2">
+                            <rect key="frame" x="0.0" y="-10" width="184" height="72"/>
+                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="184" id="2AD-2y-Dth"/>
+                            </constraints>
+                            <state key="normal" title="Redo">
+                                <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="redo:" destination="-1" eventType="touchUpInside" id="Dk1-fk-TpU"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mHI-23-KRW">
+                            <rect key="frame" x="184" y="-10" width="191" height="72"/>
+                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <state key="normal" title="Undo">
+                                <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="undo:" destination="-1" eventType="touchUpInside" id="bqF-VY-75E"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="yfd-zY-Yv2" secondAttribute="bottom" id="GRg-jt-mEG"/>
+                        <constraint firstItem="mHI-23-KRW" firstAttribute="baseline" secondItem="yfd-zY-Yv2" secondAttribute="firstBaseline" id="Juk-kA-HU8"/>
+                        <constraint firstItem="yfd-zY-Yv2" firstAttribute="leading" secondItem="euG-Wj-qiI" secondAttribute="leading" id="Q9O-qG-to8"/>
+                        <constraint firstItem="mHI-23-KRW" firstAttribute="leading" secondItem="yfd-zY-Yv2" secondAttribute="trailing" id="e3J-xB-Mvq"/>
+                        <constraint firstAttribute="trailing" secondItem="mHI-23-KRW" secondAttribute="trailing" id="e3c-ND-JfU"/>
+                        <constraint firstItem="yfd-zY-Yv2" firstAttribute="top" secondItem="euG-Wj-qiI" secondAttribute="top" constant="-10" id="jE6-6E-qeA"/>
+                        <constraint firstAttribute="bottom" secondItem="mHI-23-KRW" secondAttribute="bottom" id="wZA-4K-bYF"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="euG-Wj-qiI" firstAttribute="top" secondItem="b9s-ce-C0v" secondAttribute="bottom" constant="8" symbolic="YES" id="6ii-9M-EYg"/>
+                <constraint firstAttribute="bottom" secondItem="euG-Wj-qiI" secondAttribute="bottom" id="7Py-Ra-PQq"/>
+                <constraint firstItem="euG-Wj-qiI" firstAttribute="trailing" secondItem="b9s-ce-C0v" secondAttribute="trailing" id="Hhz-OH-Kqh"/>
+                <constraint firstItem="euG-Wj-qiI" firstAttribute="leading" secondItem="b9s-ce-C0v" secondAttribute="leading" id="ONR-qr-BXI"/>
                 <constraint firstItem="b9s-ce-C0v" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="bEQ-Zw-aaw"/>
                 <constraint firstAttribute="trailing" secondItem="b9s-ce-C0v" secondAttribute="trailing" id="ebp-qQ-E2j"/>
-                <constraint firstAttribute="bottom" secondItem="b9s-ce-C0v" secondAttribute="bottom" id="l6Y-x6-gSp"/>
+                <constraint firstAttribute="bottom" secondItem="b9s-ce-C0v" secondAttribute="bottom" constant="70" id="l6Y-x6-gSp"/>
                 <constraint firstItem="b9s-ce-C0v" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="vPr-cD-R1S"/>
             </constraints>
+            <point key="canvasLocation" x="35.5" y="122.5"/>
         </view>
     </objects>
 </document>

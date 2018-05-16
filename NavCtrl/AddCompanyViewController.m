@@ -56,6 +56,7 @@
 
 	
 	[[DataAccessObject sharedDAO] addCompany:tempComp];
+	[self.navigationController popViewControllerAnimated:YES];
 	
 	
 }

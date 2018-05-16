@@ -154,7 +154,7 @@
 										andWithStockSymbol: self.companyStockSymbolData.text
 									   andCompanyImageName: self.companyImageNameData.text];
 	
-
+[self.navigationController popToViewController:self.navigationController.viewControllers[1]  animated:YES];
 }
 
 - (void) cancel: (id) sender {
@@ -190,10 +190,8 @@
 	[super dealloc];
 }
 - (IBAction)deleteCompany:(id)sender {
-	[[DataAccessObject sharedDAO] deleteCompanyWithCompanyId: self.companyId
-										andWithCompanyName: self.companyNameData.text
-										andWithStockSymbol: self.companyStockSymbolData.text
-									   andCompanyImageName: self.companyImageNameData.text];
+	[[DataAccessObject sharedDAO] deleteCompanyWithCompanyId: self.companyId];
+	[self.navigationController popToViewController:self.navigationController.viewControllers[1]  animated:YES];
 }
 
 @end

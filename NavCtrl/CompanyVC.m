@@ -24,16 +24,34 @@
 @property (strong, nonatomic) StockFetcher *stockFetcher;
 
 
+@property (retain, nonatomic) IBOutlet UIView *buttonView;
 
 @end
 
 @implementation CompanyVC
 
+- (IBAction)redo:(id)sender {
+	
+	[dao redo];
+	self.companies = dao.companysList;
+	[self.tableView reloadData];
+	
 
+}
+
+- (IBAction)undo:(id)sender {
+
+	[dao undo];
+	self.companies = dao.companysList;
+	[self.tableView reloadData];
+
+}
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+	
+	_buttonView.hidden = YES;
 	
 	
 	
@@ -53,7 +71,9 @@
 	
 	
 	dao = [DataAccessObject sharedDAO];
-	[dao createDemoCompanys];
+	[dao initModelContext];
+	[dao loadAllCompanies];
+	
 	
 	[self.stockFetcher fetchStockPrice];
 
@@ -125,9 +145,11 @@
     if (self.tableView.editing) {
         [self.tableView setEditing:NO animated:YES];
         self.navigationItem.rightBarButtonItem.title = @"Edit";
+		_buttonView.hidden = YES;
     } else {
         [self.tableView setEditing:YES animated:NO];
         self.navigationItem.rightBarButtonItem.title = @"Done";
+		_buttonView.hidden = NO;
     }
     
 }
@@ -141,14 +163,12 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
 	// first OOP change
     return [self.companies count];
@@ -195,7 +215,7 @@
 	// http://simpleicon.com/wp-content/uploads/apple-128x128.png
 	
 	
-	cell.imageView.image = [UIImage imageNamed:@"cupertino-activity-indicator"];
+	cell.imageView.image = [UIImage imageNamed:@"default.png"];
 	dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
 	dispatch_async(queue, ^{
 		NSURL *url = [NSURL URLWithString: selectedCompany.companyImageName];
@@ -206,15 +226,10 @@
 		});
 	});
 	
+	
 
 	
-//	NSURL *url = [NSURL URLWithString:selectedCompany.companyImageName];
-//
-//	NSData *data = [NSData dataWithContentsOfURL:url];
-//	UIImage *image = [UIImage imageWithData:data];
-//
-//	//cell.imageView.image = image;
-//	[cell.imageView setImage:image];
+
 	
     return cell;
 }
@@ -234,13 +249,15 @@
  - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
  {
 	 
-	
+	_buttonView.hidden = NO;
 	 
 	 if (editingStyle == UITableViewCellEditingStyleDelete) {
 	 
 		// Data Deletion
 		// Delete the row from the data source, from the rows of company and images arrays (to avoid crash)
-		[self.companies removeObjectAtIndex: indexPath.row];
+		 
+		 [dao deleteCompanyWithCompanyId:indexPath.row];
+		 
 
 		// UI Deletion
 		[tableView deleteRowsAtIndexPaths: [NSMutableArray arrayWithObject: indexPath] withRowAnimation:UITableViewRowAnimationFade];
@@ -268,29 +285,10 @@
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
 {
 	
-	//Company *selectedCompany = self.companies[indexPath.row];
-	
 	NSLog(@"from %ld, to %ld", fromIndexPath.row, toIndexPath.row);
 	
-	// Data Move is done below
-	
-	
-	Company *objectToBeMoved = [_companies objectAtIndex:[fromIndexPath row]];
-	
-	
-	
-	
-	// remove the object(s) from from index
-	
-	[self.companies removeObjectAtIndex: fromIndexPath.row];
-	
-	
-	// add the object back from temp to toindex
-	[self.companies insertObject:objectToBeMoved atIndex:[toIndexPath row]];
-	//[self.companyImagesArray insertObject:imageToBeMoved atIndex:[toIndexPath row]];
-
 	// UI Move is done by tableview internal code magic
-	
+	[dao rearrangeRowsAndSaveNewOrderToCoreDataWithfromIndex:fromIndexPath.row toIndex:toIndexPath.row];
 	
 	[self.tableView reloadData];
 	
@@ -345,7 +343,8 @@
 
 - (void)dealloc {
     [_tableView release];
-    [super dealloc];
+	[_buttonView release];
+	[super dealloc];
 }
 
 -(void)stockFetchSuccessWithPriceString {

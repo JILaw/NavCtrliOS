@@ -53,7 +53,7 @@
 	
 	
 	[[DataAccessObject sharedDAO] addProduct:tempProduct companyId: self.companyId];
-	
+	[self.navigationController popViewControllerAnimated:YES];
 	
 
 }

@@ -196,23 +196,17 @@
 	
 	// keep the object at fromindex to a temp variable
 	Product *objectToBeMoved = [self.products objectAtIndex:[fromIndexPath row]];
-	//	NSString *imageToBeMoved = [self.productsImagesArray objectAtIndex: [fromIndexPath row]];
 	
-	
-	
-	// remove the object(s) from from index
-	//[self.companyList removeObject:objectToBeMoved];
 	[self.products removeObjectAtIndex: fromIndexPath.row];
-    //[self.productsImagesArray removeObjectAtIndex: fromIndexPath.row];
-	//[self.productsImagesArray removeObject:imageToBeMoved];
+	
 	
 	// add the object back from temp to toindex
 	[self.products insertObject:objectToBeMoved atIndex:[toIndexPath row]];
-	//[self.productsImagesArray insertObject:imageToBeMoved atIndex:[toIndexPath row]];
-	
-	// UI Move is done by tableview internal code magic 
 	
 	
+	
+	
+	// UI Move is done by tableview internal code magic
 	[self.tableView reloadData];
 	
 	

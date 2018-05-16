@@ -10,6 +10,7 @@
 #import "ProductVC.h"
 #import "Company.h"
 #import "AddCompanyViewController.h"
+#import "DataAccessObject.h"
 
 #import "StockFetcherDelegate.h"
 

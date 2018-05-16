@@ -83,7 +83,6 @@
 	self.navigationItem.leftBarButtonItem.tintColor = [UIColor whiteColor];
 	
 	
-	// ADD current product data to textfields for editing.  ****??????2
 	
 	
 	_productNameData.text =  self.selectedProduct.productName;
@@ -174,6 +173,8 @@
 	// CODE HERE TO SAVE DATA FROM CHANGES/EDITS
 	
 	[[DataAccessObject sharedDAO] editProductWithId:self.productId andCompanyId:self.companyId product:_productNameData.text andProductURL:_productURLData.text andWithProductImageURL:_productImageURLData.text];
+	
+	[self.navigationController popToViewController:self.navigationController.viewControllers[1]  animated:YES];
 }
 
 - (void) cancel: (id) sender {
@@ -215,6 +216,7 @@
 
 
 - (IBAction)deleteProduct:(id)sender {
-	[[DataAccessObject sharedDAO] deleteProductWithId:self.productId andCompanyId:self.companyId product:_productNameData.text andProductURL:_productURLData.text andWithProductImageURL:_productImageURLData.text];
+	[[DataAccessObject sharedDAO] deleteProductWithId:self.productId andCompanyId:self.companyId];
+	[self.navigationController popToViewController:self.navigationController.viewControllers[1]  animated:YES];
 }
 @end
